@@ -1,0 +1,50 @@
+﻿@model List<Frontend.Models.RentViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form asp-action="Index" method="post">
+
+    <div asp-validation-summary="ModelOnly"/> 
+
+    <div class="table-responsive-lg">
+        @if (Model !=null && Model.Count > 0)
+        {
+            <div class="form-group">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Equipment Name</th>
+                            <th scope="col">Type Name</th>
+                            <th scope="col">Days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td><input type="checkbox" asp-for="@Model[i].IsChecked" /></td>
+                                <td><input type="text" class="labelText" asp-for="@Model[i].EquipmentName" readonly /></td>
+                                <td><input type="text" class="labelText" asp-for="@Model[i].TypeName" readonly /></td>
+                                <td><input type="text" asp-for="@Model[i].Days" /></td>
+                                <td><input type="hidden" asp-for=" @Model[i].InventoryId" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Add To Cart</button>
+            </div>
+        }
+        else
+        {
+            <h3>No content not found</h3>
+        }
+
+    </div>
+</form>
+

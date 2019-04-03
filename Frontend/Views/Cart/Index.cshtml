@@ -1,0 +1,55 @@
+﻿@model List<Frontend.Models.Cart>
+
+@{
+    ViewData["Title"] = "Invoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Index" method="post">
+
+    <div class="table-responsive-lg">
+        @if (Model.Count > 0)
+        {
+            <div class="form-group">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th scope="col">Equipment Name</th>
+                            <th scope="col">Loyality Point</th>
+                            <th scope="col">Days</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">DateAdded</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                        <tr>
+
+
+                            <td><input type="text" class="labelText" asp-for="@Model[i].EquipmentName" /></td>
+                            <td><input type="text" class="labelText" asp-for="@Model[i].LoyalityPoint" /></td>
+                            <td><input type="text" class="labelText" asp-for="@Model[i].Days" /></td>
+                            <td><input type="text" class="labelText" asp-for="@Model[i].Price" /></td>
+                            <td><input type="text" class="labelText" asp-for="@Model[i].DateAdded" /></td>
+                            <td><a class=" btn btn-primary" asp-action="Delete" asp-route-id="@Model[i].Id">Remove</a></td>
+                            <td><input type="hidden" asp-for=" @Model[i].InventoryId" /></td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Payment</button>
+            </div>
+        }
+        else
+        {
+            <h3>No content not found</h3>
+        }
+
+    </div>
+</form>

@@ -1,0 +1,32 @@
+﻿@model Frontend.Models.Cart
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Delete" method="Post">
+    <div class="form-group col-sm-6" >
+        <label asp-for="@Model.EquipmentName" class="font-weight-normal font-weight-bold">Equipment Name</label>
+        <input type="text" class="form-control" asp-for="@Model.EquipmentName" disabled>        
+    </div>
+    <div class="form-group col-sm-6">
+        <label asp-for="@Model.LoyalityPoint" class="font-weight-normal font-weight-bold">Loyality Point</label>
+        <input type="text" class="form-control" asp-for="@Model.LoyalityPoint" disabled>
+    </div>
+    <div class="form-group col-sm-6">
+        <label asp-for="@Model.Days" class="font-weight-normal font-weight-bold">Days</label>
+        <input type="text" class="form-control" asp-for="@Model.Days" disabled>
+    </div>
+    <div class="form-group col-sm-6">
+        <label asp-for="@Model.Price" class="font-weight-normal font-weight-bold">Price</label>
+        <input type="text" class="form-control" asp-for="@Model.Price" disabled>
+    </div>
+    <div class="form-group col-sm-6">
+        <label asp-for="@Model.DateAdded" class="font-weight-normal font-weight-bold">Date Added</label>
+        <input type="text" class="form-control" asp-for="@Model.DateAdded" disabled>
+    </div>
+    <div class="form-group col-sm-6">
+        <button type="submit" class="btn btn-primary">Delete</button>
+    </div>
+</form>
+

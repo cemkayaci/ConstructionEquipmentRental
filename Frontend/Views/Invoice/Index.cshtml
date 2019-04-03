@@ -1,0 +1,50 @@
+﻿@model List<Frontend.Models.InvoiceViewModel>
+
+@{
+    ViewData["Title"] = "Invoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Index" method="post">
+
+    <div class="table-responsive-lg">
+        @if (Model !=null && Model.Count > 0)
+        {
+            <div class="form-group">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">OrderId</th>
+                            <th scope="col">Tot.Loyal.Points</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Date Added</th>
+                            <th scope="col">Invoice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                
+                                <td>@Model[i].RentId</td>
+                                <td>@Model[i].TotalLoyalityPoints</td>
+                                <td>@Model[i].TotalPrice</td>
+                                <td>@Model[i].DateAdded</td>
+                                <td>
+                                    
+                                    <button class="btn btn-primary" asp-action="Index" asp-route-id="@Model[i].RentId">Download</button>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>            
+        }
+        else
+        {
+            <h3>No content not found</h3>
+        }
+
+    </div>
+</form>
